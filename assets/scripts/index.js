@@ -18,4 +18,5 @@ $(() => {
   $('#book-search').on('submit', bookEvents.onGetBooks);
   $('#book-destroy').on('submit', bookEvents.onDeleteBook);
   $('#edit-book').on('submit', bookEvents.onPatchBook);
+  $('#create-book').on('submit', bookEvents.onCreateBook);
 });

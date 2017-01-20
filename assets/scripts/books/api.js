@@ -23,11 +23,19 @@ const destroy = function (id) {
   });
 };
 
-const patch = function (id, json) {
+const patch = function (id, formData) {
   return $.ajax({
     url: config.apiOrigin + '/books/' + id,
     method: 'PATCH',
-    data: json,
+    data: formData,
+  });
+};
+
+const post = function (formData) {
+  return $.ajax({
+    url: config.apiOrigin + '/books/',
+    method: 'POST',
+    data: formData,
   });
 };
 
@@ -36,4 +44,5 @@ module.exports = {
   show,
   destroy,
   patch,
+  post,
 };
