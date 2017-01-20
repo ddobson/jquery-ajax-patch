@@ -17,35 +17,49 @@
       cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
       est laborum.</p>
 
-      <form class="books" id="book-search">
-        <div class="form-group">
-          <input type="text" name="book[id]" placeholder="ID of book to search">
-        </div>
-        <button type="submit" class="btn btn-default">Search</button>
-      </form>
+      <div class="book-content"></div>
 
-      <form class="books" id="book-destroy">
-        <div class="form-group">
-          <input type="text" name="book[id]" placeholder="ID of book to delete">
-        </div>
-        <button type="submit" class="btn btn-danger">Delete Book</button>
-      </form>
+      <div class="form-wrapper">
+        <h3>Search</h3>
+        <form class="books" id="book-search">
+          <div class="form-group">
+            <input class="form-control" type="text" name="book[id]" placeholder="ID of book to search">
+          </div>
+          <button type="submit" class="btn btn-default">Search</button>
+        </form>
+      </div>
 
-      <form class='books' id="edit-book">
-        <div class="form-group">
-          <input type="text" name="book[id]" placeholder="Edit Resource ID Here">
-          <input type="text" name="book[title]" placeholder="Edit Resource Title Here">
-        </div>
-        <button type="submit" class="btn btn-default">Edit Book Title</button>
-      </form>
+      <div class="form-wrapper">
+        <h3>Update</h3>
+        <form class='books' id="edit-book">
+          <div class="form-group">
+            <input class="form-control" type="text" name="book[id]" placeholder="Edit Book ID">
+            <input class="form-control" type="text" name="book[title]" placeholder="Edit Book Title">
+          </div>
+          <button type="submit" class="btn btn-default">Edit</button>
+        </form>
+      </div>
 
-      <form class='books' id="create-book">
-        <div class="form-group">
-          <input type="text" name="book[title]" placeholder="Create Resource Title Here">
-          <input type="text" name="book[author]" placeholder="Create Resource Author Here">
-        </div>
-        <button type="submit" class="btn btn-default">Create Book</button>
-      </form>
+      <div class="form-wrapper">
+        <h3>Create</h3>
+        <form class='books' id="create-book">
+          <div class="form-group">
+            <input class="form-control" type="text" name="book[title]" placeholder="Create Book Title">
+            <input class="form-control" type="text" name="book[author]" placeholder="Create Book Author">
+          </div>
+          <button type="submit" class="btn btn-default">Create</button>
+        </form>
+      </div>
+
+      <div class="form-wrapper">
+        <h3>Delete</h3>
+        <form class="books" id="book-destroy">
+          <div class="form-group">
+            <input class="form-control" type="text" name="book[id]" placeholder="ID of book to delete">
+          </div>
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+      </div>
 
     </body>
 </html>
