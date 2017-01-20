@@ -1,10 +1,10 @@
 'use strict';
 
-const booksApi = require('./api.js');
-const booksUi = require('./ui.js');
+const api = require('./api.js');
+const ui = require('./ui.js');
 // attach getFormFields globally
 
-const getFormFields = require('expose?getFormFields!./lib/get-form-fields.js');
+const getFormFields = require('../../../lib/get-form-fields.js');
 
 // get in the habit of naming your handlers, it eases debugging.
 //
@@ -13,33 +13,42 @@ const getFormFields = require('expose?getFormFields!./lib/get-form-fields.js');
 // button is clicked
 const onGetBooks = function (event) {
   event.preventDefault();
-  let bookId = $('#book-id').val();
+  let data = getFormFields(event.target);
 
-  if (bookId.length === 0){
-      booksApi.index()
-        .then(booksUi.onSuccess)
-        .catch(booksUi.onError);
+  if (data.book.id.length === 0){
+    api.index()
+      .then(ui.onSuccess)
+      .catch(ui.onError);
   } else {
-    booksApi.show(bookId)
-      .then(booksUi.onSuccess)
-      .catch(booksUi.onError);
+    api.show(data.book.id)
+      .then(ui.onSuccess)
+      .catch(ui.onError);
   }
-
 };
 
-const onDeleteBook = function(event){
+const onDeleteBook = function (event) {
   event.preventDefault();
   // let bookId = $('#delete-book-id').val();
   // multiple ways to do everything.
   // However prefer this way.
 
   let data = getFormFields(event.target);
-  booksApi.destroy(data.book.id)
-    .then(booksUi.onDeleteSuccess)
-    .catch(booksUi.onError);
+  api.destroy(data.book.id)
+    .then(ui.onDeleteSuccess)
+    .catch(ui.onError);
+};
+
+const onPatchBook = function (event) {
+  event.preventDefault();
+
+  let data = getFormFields(event.target);
+  api.patch(data.book.id, data)
+    .then(ui.onPatchSuccess)
+    .catch(ui.onError);
 };
 
 module.exports = {
   onGetBooks,
   onDeleteBook,
+  onPatchBook,
 };
