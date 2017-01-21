@@ -3,10 +3,13 @@
 const clearContent = function () {
 
   const $bookContent = $('#response-content');
+  const $tableContent = $('.table');
 
   if ($bookContent.children().length > 0) {
     $bookContent.empty();
   }
+
+  $tableContent.fadeOut();
 };
 
 const onError = function (response) {
@@ -21,12 +24,25 @@ const onSuccess = function (data) {
   if (data.book) {
     console.log(data.book.id);
     $('#response-content')
-      .append($("<h3>Book Info</h3>"))
-      .append($("<p><strong>ID:</strong> " + data.book.id + "</p>"))
-      .append($("<p><strong>Title:</strong> " + data.book.title + "</p>"))
-      .append($("<p><strong>Author:</strong> " + data.book.author + "</p>"));
+      .append($('<h3>Book Info</h3>'))
+      .append($('<p><strong>ID:</strong> ' + data.book.id + '</p>'))
+      .append($('<p><strong>Title:</strong> ' + data.book.title + '</p>'))
+      .append($('<p><strong>Author:</strong> ' + data.book.author + '</p>'));
   } else {
-    console.table(data.books);
+    const $tableConent = $('tbody');
+
+    for (let i = 0; i < data.books.length; i++) {
+      const $row = $('<tr/>');
+      const book = data.books[i];
+
+      $tableConent.append($row);
+
+      for (let key in book) {
+        $row.append('<td>' + book[key] + '</td>');
+      }
+    }
+
+    $('.table').fadeIn();
   }
 };
 
