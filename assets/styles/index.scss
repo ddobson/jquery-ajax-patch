@@ -1,9 +1,23 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
 
-// .book-content {
-//
-// }
+$dark-green: #368806;
+$dark-red: #a90000;
+
+.book-content {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.create-msg {
+  color: $dark-green;
+  padding: 10px;
+}
+
+.delete-msg {
+  color: $dark-red;
+  padding: 10px;
+}
 
 .form-wrapper {
   margin: 15px;
