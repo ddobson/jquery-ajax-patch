@@ -12,6 +12,23 @@ const clearContent = function () {
   $tableContent.fadeOut();
 };
 
+const createTable = function(data) {
+  const $tableConent = $('tbody');
+
+  for (let i = 0; i < data.books.length; i++) {
+    const $row = $('<tr/>');
+    const book = data.books[i];
+
+    $tableConent.append($row);
+
+    for (let key in book) {
+      $row.append('<td>' + book[key] + '</td>');
+    }
+  }
+
+  $('.table').fadeIn();
+};
+
 const onError = function (response) {
   console.error(response);
 
@@ -22,27 +39,14 @@ const onError = function (response) {
 const onSuccess = function (data) {
 
   if (data.book) {
-    console.log(data.book.id);
+    console.log(data.book);
     $('#response-content')
       .append($('<h3>Book Info</h3>'))
       .append($('<p><strong>ID:</strong> ' + data.book.id + '</p>'))
       .append($('<p><strong>Title:</strong> ' + data.book.title + '</p>'))
       .append($('<p><strong>Author:</strong> ' + data.book.author + '</p>'));
   } else {
-    const $tableConent = $('tbody');
-
-    for (let i = 0; i < data.books.length; i++) {
-      const $row = $('<tr/>');
-      const book = data.books[i];
-
-      $tableConent.append($row);
-
-      for (let key in book) {
-        $row.append('<td>' + book[key] + '</td>');
-      }
-    }
-
-    $('.table').fadeIn();
+    createTable(data);
   }
 };
 
