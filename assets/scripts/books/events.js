@@ -12,7 +12,7 @@ const getFormFields = require('../../../lib/get-form-fields.js');
 // beginning with 'on' to denote that it is done when the GET /books
 // button is clicked
 
-const onGetBooks = function (event) {
+const getBooks = function (event) {
   event.preventDefault();
 
   let data = getFormFields(event.target);
@@ -28,7 +28,7 @@ const onGetBooks = function (event) {
   }
 };
 
-const onDeleteBook = function (event) {
+const deleteBook = function (event) {
   event.preventDefault();
 
   let data = getFormFields(event.target);
@@ -38,17 +38,17 @@ const onDeleteBook = function (event) {
     .catch(ui.onError);
 };
 
-const onPatchBook = function (event) {
+const patchBook = function (event) {
   event.preventDefault();
 
   let data = getFormFields(event.target);
 
   api.patch(data.book.id, data)
-    .then(ui.onPatchSuccess)
+    .then(ui.onUpdateSuccess)
     .catch(ui.onError);
 };
 
-const onCreateBook = function (event) {
+const postBook = function (event) {
   event.preventDefault();
 
   let data = getFormFields(event.target);
@@ -64,13 +64,13 @@ const sendApiRequest = function (event) {
   const submitType = this.name;
 
   if (submitType === 'search') {
-    onGetBooks(event);
+    getBooks(event);
   } else if (submitType === 'create') {
-    onCreateBook(event);
+    postBook(event);
   } else if (submitType === 'update') {
-    onPatchBook(event);
+    patchBook(event);
   } else if (submitType === 'delete') {
-    onDeleteBook(event);
+    deleteBook(event);
   }
 };
 

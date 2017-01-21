@@ -9,6 +9,13 @@ const clearContent = function () {
   }
 };
 
+const onError = function (response) {
+  console.error(response);
+
+  $('#response-content')
+    .append('<p class="bg-danger delete-msg">Uh-oh! Something went wrong.</p>');
+};
+
 const onSuccess = function (data) {
 
   if (data.book) {
@@ -18,13 +25,6 @@ const onSuccess = function (data) {
   }
 };
 
-const onError = function (response) {
-  console.error(response);
-
-  $('#response-content')
-    .append('<p class="bg-danger delete-msg">Uh-oh! Something went wrong.</p>');
-};
-
 const onDeleteSuccess = function () {
   console.log('Book was successfully deleted.');
 
@@ -32,8 +32,9 @@ const onDeleteSuccess = function () {
     .append('<p class="bg-danger delete-msg">Book was successfully deleted.</p>');
 };
 
-const onPatchSuccess = function () {
-  console.log('Book was successfully updated.');
+const onUpdateSuccess = function () {
+  $('#response-content')
+    .append('<p class="bg-success create-msg">Book was successfully updated.</p>');
 };
 
 const onPostSuccess = function () {
@@ -45,7 +46,7 @@ module.exports = {
   onSuccess,
   onError,
   onDeleteSuccess,
-  onPatchSuccess,
+  onUpdateSuccess,
   onPostSuccess,
   clearContent,
 };
