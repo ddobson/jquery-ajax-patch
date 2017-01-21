@@ -21,7 +21,7 @@
 
       <div class="form-wrapper">
         <h3>Search</h3>
-        <form class="books" id="book-search">
+        <form class="books books-form" id="book-search" name="search">
           <div class="form-group">
             <input class="form-control" type="text" name="book[id]" placeholder="ID of book to search">
           </div>
@@ -31,7 +31,7 @@
 
       <div class="form-wrapper">
         <h3>Update</h3>
-        <form class='books' id="edit-book">
+        <form class='books books-form' id="edit-book" name="update">
           <div class="form-group">
             <input class="form-control" type="text" name="book[id]" placeholder="Edit Book ID">
             <input class="form-control" type="text" name="book[title]" placeholder="Edit Book Title">
@@ -42,7 +42,7 @@
 
       <div class="form-wrapper">
         <h3>Create</h3>
-        <form class='books' id="create-book">
+        <form class='books books-form' id="create-book" name="create">
           <div class="form-group">
             <input class="form-control" type="text" name="book[title]" placeholder="Create Book Title">
             <input class="form-control" type="text" name="book[author]" placeholder="Create Book Author">
@@ -53,7 +53,7 @@
 
       <div class="form-wrapper">
         <h3>Delete</h3>
-        <form class="books" id="book-destroy">
+        <form class="books books-form" id="book-destroy" name="delete">
           <div class="form-group">
             <input class="form-control" type="text" name="book[id]" placeholder="ID of book to delete">
           </div>

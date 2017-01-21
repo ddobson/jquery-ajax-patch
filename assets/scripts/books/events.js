@@ -58,9 +58,28 @@ const onCreateBook = function (event) {
     .catch(ui.onError);
 };
 
+const sendApiRequest = function (event) {
+  ui.clearContent();
+
+  const submitType = this.name;
+
+  if (submitType === 'search') {
+    onGetBooks(event);
+  } else if (submitType === 'create') {
+    onCreateBook(event);
+  } else if (submitType === 'update') {
+    onPatchBook(event);
+  } else if (submitType === 'delete') {
+    onDeleteBook(event);
+  }
+};
+
 module.exports = {
-  onGetBooks,
-  onDeleteBook,
-  onPatchBook,
-  onCreateBook,
+  sendApiRequest,
+
+  // onGetBooks,
+  // onDeleteBook,
+  // onPatchBook,
+  // onCreateBook,
+
 };
