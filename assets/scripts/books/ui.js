@@ -19,7 +19,12 @@ const onError = function (response) {
 const onSuccess = function (data) {
 
   if (data.book) {
-    console.log(data.book);
+    console.log(data.book.id);
+    $('#response-content')
+      .append($("<h3>Book Info</h3>"))
+      .append($("<p><strong>ID:</strong> " + data.book.id + "</p>"))
+      .append($("<p><strong>Title:</strong> " + data.book.title + "</p>"))
+      .append($("<p><strong>Author:</strong> " + data.book.author + "</p>"));
   } else {
     console.table(data.books);
   }
